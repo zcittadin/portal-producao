@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../auth/auth.service';
+import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.user.email, this.user.password);
+    this.authService.login(this.user.email, this.user.password).then(invalid => {
+      if (invalid)
+        alert(invalid);
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   cadastrarUsuario() {
