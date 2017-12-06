@@ -1,31 +1,30 @@
 <header class="ui-g12 ui-md-12">
-  <h2>Portal Produção</h2>
+    <h2>Portal Produção</h2>
 </header>
-<div class="col-md-4">
-    <p-messages [(value)]="msgs"></p-messages>
-</div>
 <div class="center-content">
-  <div class="card">
-      <div id="avatar"></div>
-      <div class="card-body">
-          <form class="ui-g-12" #loginForm="ngForm">
-              <div class="form-group">
-                  <label for="email">Endereço de email</label>
-                  <input type="email" id="email" name="email" class="form-control" [(ngModel)]="user.email" required placeholder="Email" #email="ngModel">
-                  <div [hidden]="email.valid || email.pristine" class="alert alert-warning">Preencha corretamente o email</div>
-              </div>
-              <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" id="password" name="password" class="form-control" [(ngModel)]="user.password" required placeholder="Password"
-                      #password="ngModel">
-                  <div [hidden]="password.valid || password.pristine" class="alert alert-warning">Preencha corretamente o password</div>
-              </div>
-              <div class="ui-g-12">
-                  <p-checkbox binary="true"></p-checkbox>Mantenha-me conectado
-              </div>
-              <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-outline-primary btn-lg" (click)="login()">Entrar</button>
-              <button type="submit" class="btn btn-outline-success btn-lg" (click)="cadastrarUsuario()">Cadastre-se</button>
-          </form>
-      </div>
-  </div>
+    <div class="card">
+        <div id="avatar"></div>
+        <div class="card-body">
+            <form class="ui-g-12" #loginForm="ngForm">
+                <div class="form-group">
+                    <label for="email">Endereço de email</label>
+                    <input type="email" id="email" name="email" class="form-control" [(ngModel)]="user.email" required placeholder="Email" #email="ngModel">
+                    <div [hidden]="email.valid || email.pristine" class="alert alert-warning">Preencha corretamente o email</div>
+                </div>
+                <p-messages [(value)]="emailMsg"></p-messages>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" [(ngModel)]="user.password" required placeholder="Password"
+                    #password="ngModel">
+                    <div [hidden]="password.valid || password.pristine" class="alert alert-warning">Preencha corretamente o password</div>
+                </div>
+                <p-messages [(value)]="passMsg"></p-messages>
+                <div class="ui-g-12">
+                    <p-checkbox binary="true"></p-checkbox>Mantenha-me conectado
+                </div>
+                <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-outline-primary btn-lg" (click)="login()">Entrar</button>
+                <button type="submit" class="btn btn-outline-success btn-lg" (click)="cadastrarUsuario()">Cadastre-se</button>
+            </form>
+        </div>
+    </div>
 </div>

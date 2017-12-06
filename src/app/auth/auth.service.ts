@@ -35,32 +35,18 @@ export class AuthService {
 
     login(email: string, password: string): Promise<string> {
         return this.af.auth.signInWithEmailAndPassword(email, password)
-            .then(
-            response => {
+            .then(response => {
                 this.router.navigate(['/']);
                 this.af.auth.currentUser.getToken()
-                    .then(
-                    (token: string) => {
+                    .then((token: string) => {
                         localStorage.setItem('token', token);
                         localStorage.setItem('uid', this.af.auth.currentUser.uid);
                         localStorage.setItem('email', this.af.auth.currentUser.email);
-                    }
-                )
+                    });
                 return null;
-            }
-        )
-        .catch(
-            error => {
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                console.log(error);
-                if (errorCode === 'auth/wrong-password') {
-                    return 'Password inválida.';
-                } else {
-                    return errorMessage;
-                }
-            }
-            );
+            }).catch(error => {
+                return error.code;
+            });
     }
 
     /*signinGmail() {
