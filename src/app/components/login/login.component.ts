@@ -9,6 +9,8 @@ import { error } from 'selenium-webdriver';
 })
 export class LoginComponent implements OnInit {
 
+  msgs: any = [];
+
   user: any = {
     email: '',
     password: ''
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.user.email, this.user.password).then(invalid => {
       if (invalid)
-        alert(invalid);
+        this.msgs.push({ severity: 'error', summary: 'Atenção!', detail: invalid });
     }).catch(error => {
       console.log(error);
     });

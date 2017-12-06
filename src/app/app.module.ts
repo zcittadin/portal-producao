@@ -8,7 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
-import { CheckboxModule, SidebarModule } from 'primeng/primeng';
+import { CheckboxModule, SidebarModule, MessagesModule, MessageModule } from 'primeng/primeng';
 
 import { environment } from './../environments/environment';
 
@@ -36,6 +36,8 @@ import { AuthGuard } from './guards/auth-guard.service';
     BrowserAnimationsModule,
     CheckboxModule,
     SidebarModule,
+    MessagesModule,
+    MessageModule,
     AppRoutingModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
