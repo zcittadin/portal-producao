@@ -9,7 +9,8 @@ import { error } from 'selenium-webdriver';
 })
 export class LoginComponent implements OnInit {
 
-  msgs: any = [];
+  emailMsg: any = [];
+  passMsg: any = [];
 
   user: any = {
     email: '',
@@ -23,9 +24,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.emailMsg = [];
+    this.passMsg = [];
     this.authService.login(this.user.email, this.user.password).then(invalid => {
-      if (invalid)
-        this.msgs.push({ severity: 'error', summary: 'Atenção!', detail: invalid });
+      console.log(invalid);
+      if (invalid === 'auth/wrong-password') {
+        this.passMsg.push({ severity: 'error', summary: 'Password inválida!', detail: '' });
+      }
+      if (invalid === 'auth/user-not-found') {
+        this.emailMsg.push({ severity: 'error', summary: 'Email inválido!', detail: '' });
+      }
     }).catch(error => {
       console.log(error);
     });
