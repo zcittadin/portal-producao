@@ -17,6 +17,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MonitoramentoComponent } from './components/monitoramento/monitoramento.component';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './guards/auth-guard.service';
@@ -27,7 +29,9 @@ import { AuthGuard } from './guards/auth-guard.service';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    DashboardComponent,
+    MonitoramentoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,9 @@ import { AuthGuard } from './guards/auth-guard.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
+    //HomeModule
+    //DashboardModule
+    //MonitoramentoModule
   ],
   providers: [AuthService, AngularFireAuth, AuthGuard],
   bootstrap: [AppComponent]

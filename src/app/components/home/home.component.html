@@ -12,26 +12,28 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a routerLink="">
-          <i class="fa fa-user-circle"></i>
-          {{ authService.getEmail() }}</a>
+        <div class="dropdown">
+          <a routerLink="" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user-circle"></i>
+            {{ authService.getEmail() }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <!--a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a-->
+            <a class="dropdown-item" (click)="logout()" routerLink="/login">
+              <i class="fa fa-sign-out"></i>
+              Lougout
+            </a>
+          </div>
+        </div>
       </li>
       <li>
-        <a (click)="logout()" routerLink="/login">
-          <i class="fa fa-sign-out"></i>
-          Lougout
-        </a>
       </li>
     </ul>
-    <!--form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()">
-        <i class="fa fa-sign-out"></i>
-        Logout
-      </button>
-    </form-->
   </div>
 </nav>
 <br>
 <div class="container-fluid">
-  <!--app-inicio></app-inicio-->
+  <router-outlet name="principal"></router-outlet>
 </div>
