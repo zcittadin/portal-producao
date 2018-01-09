@@ -45,9 +45,6 @@ import { AuthGuard } from './guards/auth-guard.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
-    //HomeModule
-    //DashboardModule
-    //MonitoramentoModule
   ],
   providers: [AuthService, AngularFireAuth, AuthGuard],
   bootstrap: [AppComponent]

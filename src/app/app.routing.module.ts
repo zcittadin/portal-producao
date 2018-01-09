@@ -11,16 +11,16 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'home' },
+    { path: '', pathMatch: 'full', redirectTo: 'home/dashboard' },
     { path: 'login', component: LoginComponent },
     {
-        path: 'home', component: HomeComponent,
+        path: 'home', component: HomeComponent, canActivate: [AuthGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'monitoramento', component: MonitoramentoComponent }
         ]
     },
-    { path: '**', redirectTo: 'home' }
+    //{ path: '**', redirectTo: 'home' }
 ]
 
 @NgModule({
