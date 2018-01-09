@@ -7,7 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
-import { CheckboxModule, SidebarModule, MessagesModule, MessageModule } from 'primeng/primeng';
+import { CheckboxModule, SidebarModule, MessagesModule, MessageModule, ChartModule } from 'primeng/primeng';
 
 import { environment } from './../environments/environment';
 
@@ -22,6 +22,8 @@ import { MonitoramentoComponent } from './components/monitoramento/monitoramento
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './guards/auth-guard.service';
+import { ConsultasComponent } from './components/consultas/consultas.component';
+import { RelatoriosComponent } from './components/relatorios/relatorios.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AuthGuard } from './guards/auth-guard.service';
     HomeComponent,
     SidebarComponent,
     DashboardComponent,
-    MonitoramentoComponent
+    MonitoramentoComponent,
+    ConsultasComponent,
+    RelatoriosComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { AuthGuard } from './guards/auth-guard.service';
     SidebarModule,
     MessagesModule,
     MessageModule,
+    ChartModule,
     AppRoutingModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
