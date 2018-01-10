@@ -1,4 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireList } from 'angularfire2/database/interfaces';
+import { ProducaoService } from './../../services/producao.service';
+import { Producao } from '../../models/producao';
 
 @Component({
   selector: 'app-consultas',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultasComponent implements OnInit {
 
-  constructor() { }
+  producoes: Observable<any[]>;
+
+  constructor(private producaService: ProducaoService) { }
 
   ngOnInit() {
+    //this.producaService.insert();
+    this.producoes = this.producaService.lista();
+    this.producaService.insert();
   }
 
 }

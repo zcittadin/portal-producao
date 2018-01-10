@@ -11,6 +11,8 @@ import { CheckboxModule, SidebarModule, MessagesModule, MessageModule, ChartModu
 
 import { environment } from './../environments/environment';
 
+import { ProducaoService } from './services/producao.service';
+
 import { AppRoutingModule } from './app.routing.module';
 
 import { AppComponent } from './app.component';
@@ -51,7 +53,7 @@ import { RelatoriosComponent } from './components/relatorios/relatorios.componen
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
   ],
-  providers: [AuthService, AngularFireAuth, AuthGuard],
+  providers: [AuthService, AngularFireAuth, AuthGuard, ProducaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
