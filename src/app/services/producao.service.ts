@@ -14,39 +14,35 @@ export class ProducaoService {
   producoes: AngularFireList<Producao[]> = null;
   prods: Observable<any[]>;
 
-  insert() {
-    const dataAtual = new Date().toString();
-    /*const producaoObservable = this.db.object(this.dbPath);
-    producaoObservable.set({
-      id: '0875',
-      lote: "15/231-965",
-      data: dataAtual
-    });*/
-    const listRef = this.db.list(this.dbPath);
-    /*listRef.push({
-      id: '9',
-      lote: "8745-9632",
-      data: dataAtual
-    });*/
-    //producaoObservable.remove();   
-  }
+  myProd: Producao;
 
+  insert(lote: string) {
+    const dataAtual = new Date().toString();
+    const listRef = this.db.list(this.dbPath);
+    listRef.push({
+      id: '8',
+      lote: lote,
+      data: dataAtual
+    });
+  }
+  
   lista() {
     this.prods = this.db.list(this.dbPath).valueChanges();
     return this.prods;
   }
-
+  
   getProducao(key: string): AngularFireObject<Producao> {
     this.producao = this.db.object(`${this.dbPath}/${key}`);
     return this.producao;
   }
-
+  
   createProducao(producao: Producao): void {
     //this.producoes.push(producao);//.catch(error => this.handleError(error));
   }
-
+  
   updateProducao(key: string, value: any): void {
     this.producoes.update(key, value).catch(error => this.handleError(error));
+    //producaoObservable.remove();   
   }
 
   deleteProducao(key: string): void {

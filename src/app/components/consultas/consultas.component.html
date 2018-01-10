@@ -1,7 +1,18 @@
 <h1>Consultas</h1>
 
-<div *ngFor="let producao of producoes | async" style="width: 300px;">
-  {{producao}}
+<input type="text" [(ngModel)]="lote">
+<button class="button btn-primary" (click)="add()">Add</button>
+
+<div *ngFor="let producao of producoes | async" style="width: 800px;">
+  <p>
+    ID: {{producao.id}}
+  </p>
+  <p>
+    Data: {{producao.data | date: 'dd/MM/yyyy'}}
+  </p>
+  <p>
+    Lote: {{producao.lote}}
+  </p>
 </div>
 
 <div>

@@ -12,13 +12,17 @@ import { Producao } from '../../models/producao';
 export class ConsultasComponent implements OnInit {
 
   producoes: Observable<any[]>;
+  lote: string;
 
-  constructor(private producaService: ProducaoService) { }
+  constructor(private producaoService: ProducaoService) { }
 
   ngOnInit() {
     //this.producaService.insert();
-    this.producoes = this.producaService.lista();
-    this.producaService.insert();
+    this.producoes = this.producaoService.lista();
+  }
+  
+  add() {
+    this.producaoService.insert(this.lote);
   }
 
 }
