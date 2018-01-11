@@ -5,22 +5,20 @@
   </div>
   <br>
   <div class="col-md-6">
-    <button type="button" class="button btn-primary" (click)='insert()'>Add</button>
+    <button type="button" class="btn btn-primary" (click)='insert()'>Add</button>
   </div>
   <hr>
   <table class="table table-striped">
     <thead class="thead-dark" style="text-align: center">
       <tr>
-        <th>ID</th>
         <th>Data</th>
-        <th>Temperatura</th>
+        <th>Temperatura (°C)</th>
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
     </thead>
     <tbody style="text-align: center">
       <tr *ngFor="let registro of registros | async">
-        <td>{{registro.id}}</td>
         <td>{{registro.data | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
         <td>{{registro.temp}}</td>
         <td>

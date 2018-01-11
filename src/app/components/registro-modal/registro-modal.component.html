@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Editar registro</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <input type="text" class="form-control" [(ngModel)]="temp">
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="salvar()">Salvar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancelar</button>
+</div>

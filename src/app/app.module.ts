@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import { CheckboxModule, SidebarModule, MessagesModule, MessageModule, ChartModule } from 'primeng/primeng';
+import { ModalModule } from 'ngx-bootstrap/modal/modal.module';
 
 import { environment } from './../environments/environment';
 
@@ -28,6 +29,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './guards/auth-guard.service';
 import { ConsultasComponent } from './components/consultas/consultas.component';
 import { RelatoriosComponent } from './components/relatorios/relatorios.component';
+import { RegistroModalComponent } from './components/registro-modal/registro-modal.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { RelatoriosComponent } from './components/relatorios/relatorios.componen
     DashboardComponent,
     MonitoramentoComponent,
     ConsultasComponent,
-    RelatoriosComponent
+    RelatoriosComponent,
+    RegistroModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,13 +54,15 @@ import { RelatoriosComponent } from './components/relatorios/relatorios.componen
     MessageModule,
     ChartModule,
     AppRoutingModule,
+    ModalModule.forRoot(),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
     AngularFirestoreModule
   ],
   providers: [AuthService, AngularFireAuth, AuthGuard, ProducaoService, RegistroService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RegistroModalComponent]
 })
 export class AppModule { }
 

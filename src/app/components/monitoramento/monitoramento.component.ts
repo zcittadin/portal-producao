@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 import { Observable } from 'rxjs/Observable';
 
 import { RegistroService } from './../../services/registro.service';
 import { Registro } from './../../models/registro';
+import { RegistroModalComponent } from './../registro-modal/registro-modal.component';
 
 @Component({
   selector: 'app-monitoramento',
@@ -12,10 +16,11 @@ import { Registro } from './../../models/registro';
 })
 export class MonitoramentoComponent implements OnInit {
 
+  bsModalRef: BsModalRef;
   registros: Observable<Registro[]>;
   temp: number;
 
-  constructor(private regService: RegistroService) { }
+  constructor(private regService: RegistroService, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.registros = this.regService.getRegistros();
@@ -27,7 +32,10 @@ export class MonitoramentoComponent implements OnInit {
   }
 
   edit(registro: Registro) {
-    this.regService.editRegistro(registro);
+    this.bsModalRef = this.modalService.show(RegistroModalComponent);
+    this.bsModalRef.content.idReg = registro.id;
+    this.bsModalRef.content.data = registro.data;
+    this.bsModalRef.content.temp = registro.temp;
   }
 
   delete(registro: Registro) {
