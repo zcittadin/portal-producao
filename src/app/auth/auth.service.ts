@@ -72,6 +72,7 @@ export class AuthService {
     logout() {
         this.af.auth.signOut();
         localStorage.clear();
+        this.router.navigate(['/login']);
     }
 
     getEmail() {

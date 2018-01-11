@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { Producao } from './../models/producao';
+import { Of } from './../models/of';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -23,7 +24,7 @@ export class ProducaoService {
       id: '8',
       lote: lote,
       data: dataAtual
-    });
+    }); 
   }
   
   lista() {

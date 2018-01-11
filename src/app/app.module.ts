@@ -5,15 +5,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import { CheckboxModule, SidebarModule, MessagesModule, MessageModule, ChartModule } from 'primeng/primeng';
 
 import { environment } from './../environments/environment';
 
-import { ProducaoService } from './services/producao.service';
-
 import { AppRoutingModule } from './app.routing.module';
+
+import { ProducaoService } from './services/producao.service';
+import { RegistroService } from './services/registro.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -52,8 +54,9 @@ import { RelatoriosComponent } from './components/relatorios/relatorios.componen
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
+    AngularFirestoreModule
   ],
-  providers: [AuthService, AngularFireAuth, AuthGuard, ProducaoService],
+  providers: [AuthService, AngularFireAuth, AuthGuard, ProducaoService, RegistroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

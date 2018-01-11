@@ -1,20 +1,28 @@
-<h1>Consultas</h1>
-
-<input type="text" [(ngModel)]="lote">
-<button class="button btn-primary" (click)="add()">Add</button>
-
-<div *ngFor="let producao of producoes | async" style="width: 800px;">
-  <p>
-    ID: {{producao.id}}
-  </p>
-  <p>
-    Data: {{producao.data | date: 'dd/MM/yyyy'}}
-  </p>
-  <p>
-    Lote: {{producao.lote}}
-  </p>
-</div>
-
-<div>
-  <button type="button" class="button btn-danger" (click)='deleteAll()'>Delete All</button>
+<div class="container">
+  <div class="col-md-6">
+    <label>Lote</label>
+    <input class="form-control" type="text" [(ngModel)]="lote">
+  </div>
+  <br>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-primary" (click)="add()">Add</button>
+    <button type="button" class="btn btn-danger" (click)='deleteAll()'>Delete All</button>
+  </div>
+  <hr>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Data</th>
+        <th>Lote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producao of producoes | async">
+        <td>{{producao.id}}</td>
+        <td>{{producao.data | date: 'dd/MM/yyyy'}}</td>
+        <td>{{producao.lote}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
