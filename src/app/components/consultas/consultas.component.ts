@@ -13,16 +13,24 @@ export class ConsultasComponent implements OnInit {
 
   producoes: Observable<any[]>;
   lote: string;
+  bit: boolean;
 
   constructor(private producaoService: ProducaoService) { }
 
   ngOnInit() {
-    //this.producaService.insert();
     this.producoes = this.producaoService.lista();
+    this.producaoService.getCommand().subscribe(bit => {
+      this.bit = bit;
+    });
   }
-  
+
   add() {
     this.producaoService.insert(this.lote);
+  }
+
+  toggleBit() {
+    this.bit = !this.bit;
+    this.producaoService.toggleCommand(this.bit);
   }
 
 }

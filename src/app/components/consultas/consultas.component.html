@@ -9,6 +9,19 @@
     <button type="button" class="btn btn-danger" (click)='deleteAll()'>Delete All</button>
   </div>
   <hr>
+  <div class="col-md-6">
+    <!-- Rounded switch -->
+    <label>Off/On</label>
+    <br>
+    <label class="switch">
+      <input type="checkbox" (click)="toggleBit()">
+      <span class="slider round"></span>
+    </label>
+    <div class="col-md-6">
+      <input type="text" [ngClass]="{'on': bit, 'off': !bit}">
+    </div>
+  </div>
+  <hr>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
