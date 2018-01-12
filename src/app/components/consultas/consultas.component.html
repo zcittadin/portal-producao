@@ -10,17 +10,31 @@
   </div>
   <hr>
   <div class="col-md-6">
-      <p-checkbox name="groupname" (click)="toggleBit()" value="bit"></p-checkbox>
     <!-- Rounded switch -->
-    <label>Off/On</label>
+    <label>Off/On LED</label>
     <br>
-    <label class="switch">
-      <input type="checkbox" (click)="toggleBit()">
-      <span class="slider round" [ngClass]="{'slider': bit, 'slider:before': !bit}"></span>
-    </label>
-    <div class="col-md-6">
-      <input type="text" [ngClass]="{'on': bit, 'off': !bit}">
+    <div class="row">
+      <div>
+        <label class="switch">
+          <input type="checkbox" (click)="toggleLed()">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div>
+        <input type="text" [ngClass]="{'on': led, 'off': !led}">
+      </div>
     </div>
+  </div>
+  <hr>
+  <div class="col-md-6">
+    <!-- Rounded switch -->
+    <label>Off/On Botão</label>
+    <br>
+    <input type="text" [ngClass]="{'on': button, 'off': !button}">
+    <br>
+    <label>Counter</label>
+    <br>
+    {{counter}}
   </div>
   <hr>
   <table class="table table-striped">

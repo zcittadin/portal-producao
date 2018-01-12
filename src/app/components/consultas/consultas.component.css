@@ -64,7 +64,7 @@ input:checked+.slider:before {
 }
 
 .off {
-    background-color: red;
+    background-color: rgb(53, 53, 53);
 }
 
 .on {

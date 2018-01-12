@@ -13,14 +13,22 @@ export class ConsultasComponent implements OnInit {
 
   producoes: Observable<any[]>;
   lote: string;
-  bit: boolean;
+  led: boolean;
+  button: boolean;
+  counter: number;
 
   constructor(private producaoService: ProducaoService) { }
 
   ngOnInit() {
     this.producoes = this.producaoService.lista();
     this.producaoService.getCommand().subscribe(bit => {
-      this.bit = bit;
+      this.led = bit;
+    });
+    this.producaoService.getButtonStatus().subscribe(bit => {
+      this.button = bit;
+    });
+    this.producaoService.getCounter().subscribe(value => {
+      this.counter = value;
     });
   }
 
@@ -28,9 +36,9 @@ export class ConsultasComponent implements OnInit {
     this.producaoService.insert(this.lote);
   }
 
-  toggleBit() {
-    this.bit = !this.bit;
-    this.producaoService.toggleCommand(this.bit);
+  toggleLed() {
+    this.led = !this.led;
+    this.producaoService.toggleCommand(this.led);
   }
 
 }

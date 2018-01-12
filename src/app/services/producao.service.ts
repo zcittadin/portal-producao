@@ -9,16 +9,22 @@ export class ProducaoService {
   constructor(private db: AngularFireDatabase) { }
 
   private dbPath: string = '/producao';
-  private dbCommand: string = '/comandos';
+  private ledPath: string = '/comandos';
+  private buttonPath: string = '/botao';
+  private countPath: string = '/counter';
 
   producao: AngularFireObject<Producao> = null;
   producoes: AngularFireList<Producao[]> = null;
   prods: Observable<any[]>;
 
-  commandObj: AngularFireObject<boolean> = null;
-  bit: Observable<boolean>;
+  //Led
+  ledObj: AngularFireObject<boolean> = null;
 
-  myProd: Producao;
+  //Botao
+  buttonObj: AngularFireObject<boolean> = null;
+
+  //Counter
+  countObj: AngularFireObject<number> = null;
 
   insert(lote: string) {
     const dataAtual = new Date().toString();
@@ -60,13 +66,23 @@ export class ProducaoService {
   }
 
   toggleCommand(bit: boolean) {
-    const commandRef = this.db.object(this.dbCommand);
+    const commandRef = this.db.object(this.ledPath);
     commandRef.set(bit);
   }
-  
+
   getCommand() {
-    this.commandObj = this.db.object(this.dbCommand);
-    return this.commandObj.valueChanges();
+    this.ledObj = this.db.object(this.ledPath);
+    return this.ledObj.valueChanges();
+  }
+
+  getButtonStatus() {
+    this.buttonObj = this.db.object(this.buttonPath);
+    return this.buttonObj.valueChanges();
+  }
+
+  getCounter() {
+    this.countObj = this.db.object(this.countPath);
+    return this.countObj.valueChanges();
   }
 
 }
